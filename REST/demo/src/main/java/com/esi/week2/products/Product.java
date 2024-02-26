@@ -9,9 +9,7 @@ public class Product {
     private BigDecimal price;
     
 
-    /* Constructors */
-    
-    
+    /* Constructors */ 
     public Product(String id, String name, String description, BigDecimal price) {
         this.id = id;
         this.name = name;
