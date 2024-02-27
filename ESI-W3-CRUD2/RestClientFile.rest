@@ -1,0 +1,67 @@
+### Get All orders for a specific product (e.g., id = 01) Create the product with id 01 first before adding any orders
+GET http://localhost:8080/products/01/orders 
+
+
+### Get an order for a specific product
+GET http://localhost:8080/products/01/orders/2
+
+
+### Add an order for a specific product
+POST  http://localhost:8080/products/01/orders  HTTP/1.1
+content-type: application/json
+
+  {
+    "order_id": "2",
+    "quantity": 13
+  }
+
+
+### Update an order for a specific product
+PUT  http://localhost:8080/products/01/orders/2  HTTP/1.1
+content-type: application/json
+
+  {
+    "order_id": "2",
+    "quantity": 15
+  }
+
+
+### Update an order for a specific product
+DELETE  http://localhost:8080/products/01/orders/2  HTTP/1.1
+content-type: application/json
+
+####################################
+
+### Get All products
+GET http://localhost:8080/api/products 
+
+
+### Get a product by id
+GET http://localhost:8080/api/products/01 
+
+
+### Add a product
+POST  http://localhost:8080/api/products HTTP/1.1
+content-type: application/json
+
+{
+    "id": "01",
+    "name": "new light vehicle",
+    "description": "Can also be used for light work",
+    "price": 1250
+}
+
+### Update a product
+PUT   http://localhost:8080/api/products/035 HTTP/1.1
+content-type: application/json
+
+{
+    "id": "01",
+    "name": "new light vehicle ",
+    "type": "Light another new",
+    "description": "Can also be used for light work",
+    "price": 150
+}
+
+### Delete a product
+DELETE    http://localhost:8080/api/products/01 
