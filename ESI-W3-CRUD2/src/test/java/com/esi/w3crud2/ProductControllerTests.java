@@ -36,7 +36,7 @@ class ProductControllerTests {
     private MockMvc mockMvc;
 
     @Test
-    public void getProductsApiTest() throws Exception {
+    void getProductsApiTest() throws Exception {
         mockMvc.perform(MockMvcRequestBuilders
                 .get("/api/products")
                 .accept(MediaType.APPLICATION_JSON))
@@ -44,7 +44,7 @@ class ProductControllerTests {
     }
 
     @Test
-    public void getProductByIdApiTest() throws Exception {
+    void getProductByIdApiTest() throws Exception {
         mockMvc.perform(MockMvcRequestBuilders
                 .get("/api/products/{id}", 01)
                 .accept(MediaType.APPLICATION_JSON))
@@ -66,7 +66,7 @@ class ProductControllerTests {
                 .accept(MediaType.APPLICATION_JSON))
                 .andExpect(status().isCreated());
         // HTTP returns 200 "OK" status when there is a BODY, and
-        // return 201 "Created" status when there is BODY.
+        // return 201 "Created" status when there is no BODY.
         // However, we are controlling the returned status code by using
         // @ResponseStatus(HttpStatus.CREATED) = 201
     }
@@ -80,7 +80,7 @@ class ProductControllerTests {
     }
 
     @Test
-    public void deleteProductApiTest() throws Exception {
+    void deleteProductApiTest() throws Exception {
         mockMvc.perform(MockMvcRequestBuilders
                 .delete("/api/products/{id}", 15))
                 .andExpect(status().isOk());
@@ -89,6 +89,18 @@ class ProductControllerTests {
     // to be done by students
     @Test
     void putProductApiTest() throws Exception {
+        Product product = new Product();
+        product.setId("10");
+        product.setName("product 10");
+        product.setDescription("it cost less");
+        product.setPrice(BigDecimal.valueOf(1233));
+
+        mockMvc.perform(MockMvcRequestBuilders
+                .post("/api/products/{id}", 10)
+                .contentType(MediaType.APPLICATION_JSON)
+                .content(asJsonString(product))
+                .accept(MediaType.APPLICATION_JSON))
+                .andExpect(status().isAccepted());
 
     }
 }

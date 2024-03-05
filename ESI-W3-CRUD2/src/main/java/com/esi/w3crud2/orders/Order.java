@@ -1,6 +1,5 @@
 package com.esi.w3crud2.orders;
 
-import com.esi.week2.products.Product;
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
 
