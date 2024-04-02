@@ -1,0 +1,76 @@
+
+### Get All products
+GET http://localhost:8082/api/products 
+
+### Get All products - port 8080 - API
+GET http://localhost:8080/api/products 
+
+### Get a code of a product with delay - port 8083 - API
+GET http://localhost:8083/api/inventory/p-109-09
+
+### Get a code of a product with delay - port 8080 - API
+GET http://localhost:8080/api/inventory/p-109-09
+
+### Get a product with quantity
+GET http://localhost:8080/api/products/quantity/01
+
+
+##############################
+
+### Get a code of a product with delay - port 8080 - API
+GET http://localhost:8083/api/inventory/delay/p-109-10
+
+### Get a code of a product with delay - port 8080 - API
+GET http://localhost:8083/api/inventory/p-109-09
+
+
+############ Circuit Breaker  ##################
+
+############  to check the status of the CB
+###  http://localhost:8082/actuator/health
+
+### Get a product with quantity no CB -> produce exception
+GET http://localhost:8082/api/products/quantity/01
+
+### Get a product with quantity with CB returns the default response
+GET http://localhost:8082/api/products/quantityCB/01
+
+############ Circuit Breaker  ##################
+
+
+
+
+### Get a product by id
+GET http://localhost:8082/api/products/02 
+
+
+### Add a product
+POST  http://localhost:8082/api/products HTTP/1.1
+content-type: application/json
+
+{
+    "id": "10",
+    "code": "p-109-20",
+    "name": "new light vehicle",
+    "type": "Light another new",
+    "description": "Can also be used for light work",
+    "price": 1250
+}
+
+### Update a product
+PUT   http://localhost:8082/api/products/02 HTTP/1.1
+content-type: application/json
+
+{
+    "id": "10",
+    "code": "p-109-20",
+    "name": "new light vehicle",
+    "type": "Light another new",
+    "description": "Can also be used for light work",
+    "price": 150
+}
+
+### Delete a product
+DELETE    http://localhost:8082/api/products/02
+
+

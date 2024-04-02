@@ -1,0 +1,19 @@
+### send a string message to the orderTopic topic
+GET http://localhost:8082/api/kafka/publish?message=orderPlacedAgain
+
+
+### send an order object through a post request to the orderTopicJson topic
+POST  http://localhost:8082/api/kafka/publish HTTP/1.1
+content-type: application/json
+
+{
+    "id": "11114567-e89b-12d3-a456-426614174000",
+    "description": "order description..."
+}
+
+#################################
+
+
+
+
+
